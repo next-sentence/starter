@@ -1,0 +1,4 @@
+sylius_resource:
+    translation:
+        locale_provider: app.translation_locale_provider
+    resources: ~

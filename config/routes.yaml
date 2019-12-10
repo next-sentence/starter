@@ -1,0 +1,24 @@
+app_backend:
+    resource: "routes/backend.yaml"
+    prefix: admin
+
+app_frontend:
+    prefix: /{_locale}
+    resource: './routes/frontend.yaml'
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+
+app_frontend_default_locale:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: 'App\Controller\Frontend\LocaleSwitchController:switchAction'
+
+app_api:
+    resource: "routes/api.yaml"
+    prefix: /api
+    defaults:
+        _format: json
+
+lwc_cms_bunle:
+    resource: "@LwcCmsBundle/Resources/config/routing.yml"

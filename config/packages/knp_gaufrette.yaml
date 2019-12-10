@@ -1,0 +1,11 @@
+knp_gaufrette:
+    adapters:
+        app_local:
+            local:
+                directory: "%kernel.project_dir%/public/media"
+                create: true
+    filesystems:
+        app_local:
+            adapter: "app_local"
+
+    stream_wrapper: ~

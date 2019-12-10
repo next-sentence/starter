@@ -1,0 +1,54 @@
+imports:
+    - { resource: "@SyliusCustomerBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusUserBundle/Resources/config/app/config.yml" }
+    - { resource: "@LwcCmsBundle/Resources/config/config.yml" }
+
+parameters:
+    email_contact: contact@app_name.com
+    email_name: Contact AppName
+    email_sender: no-reply@app_name.com
+    public_dir: '%kernel.project_dir%/public'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autoconfigure: true
+        autowire: true
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../../src/*'
+        exclude: '../../src/{DependencyInjection,Entity,Form/EventSubscriber/AddUserFormSubscriber.php,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Entity\OAuth\ClientManager:
+        $class: '%fos_oauth_server.model.client.class%'
+
+    Sylius\Component\User\Canonicalizer\CanonicalizerInterface: '@sylius.canonicalizer'
+    Sylius\Component\User\Security\Generator\GeneratorInterface: '@sylius.app_user.token_generator.email_verification'
+
+    App\Provider\TranslationLocaleProvider:
+        arguments: ["@sylius.repository.locale", "%locale%"]
+
+    app.translation_locale_provider: '@App\Provider\TranslationLocaleProvider'
+
+#    app.filesystem.local:
+    lwc_cms.media.filesystem:
+        public: true
+        class: Gaufrette\Filesystem
+        factory: [ "@knp_gaufrette.filesystem_map", get ]
+        arguments: [ 'app_local' ]
+
+    app.translatable_entity_locale_assigner:
+        class: App\Translation\TranslatableEntityLocaleAssigner
+        decorates: sylius.translatable_entity_locale_assigner
+        arguments:
+            - '@app.translatable_entity_locale_assigner.inner'
+            - '@sylius.translation_locale_provider'
+            - '@sylius.context.locale'

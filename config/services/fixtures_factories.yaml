@@ -1,0 +1,5 @@
+services:
+    App\Fixture\Factory\:
+        resource: '../../src/Fixture/Factory/*'
+        autowire: true
+        public: true

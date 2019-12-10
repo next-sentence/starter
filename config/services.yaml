@@ -1,0 +1,11 @@
+imports:
+    - { resource: services/_main.yaml }
+    - { resource: services/command.yaml }
+    - { resource: services/context.yaml }
+    - { resource: services/fixtures.yaml }
+    - { resource: services/fixtures_factories.yaml }
+    - { resource: services/form.yaml }
+    - { resource: services/installer.yaml }
+    - { resource: services/listener.yaml }
+    - { resource: services/menu.yaml }
+    - { resource: services/validator.yaml }

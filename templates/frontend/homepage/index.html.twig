@@ -1,0 +1,7 @@
+{% extends 'frontend/layout.html.twig' %}
+
+{% block content %}
+
+    {{ render(path('lwc_cms_shop_page_show_link_by_code', {'code' : 'test', 'template' : '@LwcCms/Shop/Page/Show/_link.html.twig'})) }}
+
+{% endblock %}

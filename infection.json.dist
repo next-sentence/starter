@@ -1,0 +1,28 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Command",
+            "Controller",
+            "DependencyInjection",
+            "Formatter",
+            "Menu",
+            "Migrations",
+            "Fixture",
+            "Form/Type",
+            "Kernel.php"
+        ]
+    },
+    "logs": {
+        "text": "infection-log.txt"
+    },
+    "mutators": {
+        "@default": true,
+        "IdenticalEqual": false,
+        "NotIdenticalNotEqual": false
+    },
+    "testFramework":"phpspec"
+}
