@@ -14,3 +14,7 @@ services:
     App\Fixture\ApiClientFixture:
         arguments:
             $exampleFactory: '@App\Fixture\Factory\ApiClientExampleFactory'
+
+    App\Fixture\LocaleFixture:
+        arguments:
+            $exampleFactory: '@App\Fixture\Factory\LocaleExampleFactory'

@@ -1,5 +1,7 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
+parameters:
+    fixtures_dir: "%kernel.project_dir%/config/fixtures"
 
 sylius_fixtures:
     suites:
@@ -19,7 +21,14 @@ sylius_fixtures:
                                 enabled: true
                                 first_name: "John"
                                 last_name: "Doe"
-
+                locale:
+                    name: "locale"
+                    options:
+                        custom:
+                            -
+                                code: "en"
+                            -
+                                code: "ro"
                 app_user:
                    options:
                        custom:
@@ -37,3 +46,155 @@ sylius_fixtures:
                             client:
                                 random_id: 5rbhrb0iiukokcwk8gow0w4ocgww0oco8g8gsgokwc0wcssg4w
                                 secret: 2rlxzhijcx448ow4c0gksw4wo8oo4k8kkwwg0osskk8g0k8kw8
+                section:
+                    options:
+                        custom:
+                            blog:
+                                translations:
+                                    en:
+                                        name: "Blog"
+                            general:
+                                translations:
+                                    en:
+                                        name: "General"
+                            homepage:
+                                translations:
+                                    en:
+                                        name: "Homepage"
+                block:
+                    options:
+                        custom:
+                            homepage_intro:
+                                translations:
+                                    en:
+                                        content: |
+                                            <h3>Blocks</h3>
+                                            <p>
+                                                The left block is rendered with the usage of the particular controller like this:
+                                            </p>
+                                            <pre>
+                                            render(path('lwc_cms_render_block', {'code' : 'homepage_header_image'}))
+                                            </pre>
+                                            <p>
+                                               It also can take template as a parameter, but it's optional. In this case, it works the same as below Twig functions. Sometimes you might want the block to render in a different template, that's where the controller is useful.
+                                             </p>
+                                            <p>
+                                                The other three blocks, including this one you are reading right now, are using Twig helper method.
+                                            </p>
+                                            <pre>
+                                            lwc_cms_render_block('homepage_intro')
+                                            lwc_cms_render_block('homepage_banner_image_1')
+                                            lwc_cms_render_block('homepage_banner_image_2')
+                                            </pre>
+                            lorem_ipsum:
+                                sections:
+                                    - "homepage"
+                                translations:
+                                    en:
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                                <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                                <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                                <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene</p>
+
+                media:
+                    options:
+                        custom:
+                            homepage_header_image:
+                                type: image
+                                path: "%fixtures_dir%/homepage_header.jpeg"
+                                translations:
+                                    en:
+                                        name: |
+                                            <a href="/en/page/about">This is a linked title</a>
+                                        alt: Homepage image media
+                                        content: |
+                                            <h3>Media description</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            </p>
+                            homepage_video:
+                                type: video
+                                path: "%fixtures_dir%/homepage_video.mp4"
+                                translations:
+                                    en:
+                                        name: |
+                                            Homepage video media
+                                        alt: Homepage video
+                                        content: |
+                                            <h3>Media description</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            </p>
+                            homepage_pdf:
+                                type: file
+                                path: "%fixtures_dir%/BitBagOffer.pdf"
+                                translations:
+                                    en:
+                                        name: Homepage PDF media
+                                        alt: BitBag offer
+                                        content: |
+                                            <h3>File description</h3>
+                                            <p>
+                                                The below button links to a PDF file.
+                                                Check it out! <i class="em em-slightly_smiling_face"></i>
+                                            </p>
+                            size_table:
+                                type: image
+                                path: "%fixtures_dir%/size_table.jpeg"
+                page:
+                    options:
+                        custom:
+                            lorem_ipsum:
+                                number: 15
+                                sections:
+                                    - "blog"
+                                translations:
+                                    en:
+                                        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias?"
+                                        image_path: "%fixtures_dir%/homepage_header.jpeg"
+                                        content: |
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
+                            about:
+                                sections:
+                                    - "general"
+                                translations:
+                                    en:
+                                        name: "About us"
+                                        slug: "about"
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                               <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                               <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                               <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                               <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene</p>
+
+                frequently_asked_question:
+                    options:
+                        custom:
+                            lorem_ipsum:
+                                number: 10
+                                translations:
+                                    en:
+                                        question: |
+                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
+                                        answer: |
+                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.

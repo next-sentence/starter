@@ -38,12 +38,11 @@ services:
 
     app.translation_locale_provider: '@App\Provider\TranslationLocaleProvider'
 
-#    app.filesystem.local:
-    lwc_cms.media.filesystem:
+    app.filesystem.image:
         public: true
         class: Gaufrette\Filesystem
         factory: [ "@knp_gaufrette.filesystem_map", get ]
-        arguments: [ 'app_local' ]
+        arguments: [ 'app_image' ]
 
     app.translatable_entity_locale_assigner:
         class: App\Translation\TranslatableEntityLocaleAssigner

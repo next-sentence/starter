@@ -1,11 +1,11 @@
 knp_gaufrette:
     adapters:
-        app_local:
+        app_image:
             local:
-                directory: "%kernel.project_dir%/public/media"
+                directory: "%kernel.project_dir%/public/media/image"
                 create: true
     filesystems:
-        app_local:
-            adapter: "app_local"
+        app_image:
+            adapter: "app_image"
 
     stream_wrapper: ~
