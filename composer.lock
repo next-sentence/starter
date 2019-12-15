@@ -3234,12 +3234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/next-sentence/cms-bundle.git",
-                "reference": "da05732b137e7ae3d4f58e445f324ca2577fd1ea"
+                "reference": "a1900dda9a1efd24ba081d81a40d3be332bef80a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/next-sentence/cms-bundle/zipball/da05732b137e7ae3d4f58e445f324ca2577fd1ea",
-                "reference": "da05732b137e7ae3d4f58e445f324ca2577fd1ea",
+                "url": "https://api.github.com/repos/next-sentence/cms-bundle/zipball/a1900dda9a1efd24ba081d81a40d3be332bef80a",
+                "reference": "a1900dda9a1efd24ba081d81a40d3be332bef80a",
                 "shasum": ""
             },
             "require": {
@@ -3306,7 +3306,7 @@
             "keywords": [
                 "sylius-cms bundle"
             ],
-            "time": "2019-12-14T13:28:49+00:00"
+            "time": "2019-12-15T15:05:26+00:00"
         },
         {
             "name": "ocramius/package-versions",
